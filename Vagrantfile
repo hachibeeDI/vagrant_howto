@@ -92,6 +92,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
   # end
+  config.vm.provision :fabric do |fabric|
+    fabric.fabfile_path = "./fabfile.py"
+    fabric.tasks = ["kernel_name", "install_git"]
+  end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
